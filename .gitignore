@@ -21,3 +21,7 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+mapBuilder/.gradle/*
+mapBuilder/.idea/*
+mapBuilder/build/*
+mapBuilder/src/.gradle/*
