@@ -14,7 +14,7 @@ public class Chunk {
     private List<Node> nodeSet;
 
     public Chunk(){
-        this(5,5);
+        this(30,30);
     }
 
     public Chunk(int height, int width){
