@@ -9,14 +9,7 @@ public class AbilityScores {
     private Ability wisdom;
     private Ability charisma;
 
-    public AbilityScores () {
-        this.strength = new Ability(AbilitieType.Strength);
-        this.dexterity = new Ability(AbilitieType.Dexterity);
-        this.constitution = new Ability(AbilitieType.Constitution);
-        this.intelligence = new Ability(AbilitieType.Intelligence);
-        this.wisdom = new Ability(AbilitieType.Wisdom);
-        this.charisma = new Ability(AbilitieType.Charisma);
-    }
+    public AbilityScores () {}
 
     public Ability getStrength() {
         return strength;
@@ -42,11 +35,33 @@ public class AbilityScores {
         return charisma;
     }
 
+    public void setDexterity(int score) {
+            this.dexterity = new Ability(AbilitieType.Dexterity);
+    }
+
+    public void setStrength(int score) {
+        this.strength = new Ability(AbilitieType.Strength);
+    }
+
+    public void setConstitution(int score) {
+        this.constitution = new Ability(AbilitieType.Constitution);
+    }
+
+    public void setIntelligence(int score) {
+        this.intelligence = new Ability(AbilitieType.Intelligence);
+    }
+
+    public void setWisdom(int score) {
+        this.wisdom = new Ability(AbilitieType.Wisdom);
+    }
+
+    public void setCharisma(int score) {
+        this.charisma = new Ability(AbilitieType.Charisma);
+    }
+
     protected class Ability {
 
         private AbilitieType abilitieType;
-
-
 
         private int AbilityScore = 0;
 
