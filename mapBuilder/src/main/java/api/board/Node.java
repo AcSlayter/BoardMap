@@ -1,4 +1,4 @@
-package hello.something;
+package api.board;
 
 import java.util.Random;
 

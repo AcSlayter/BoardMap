@@ -1,4 +1,4 @@
-package hello.something;
+package api.board;
 
 /**
  * Created by aaron on 9/29/2018.
