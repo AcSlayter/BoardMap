@@ -11,26 +11,17 @@ import java.util.UUID;
 public class Character {
 
     private UUID key = UUID.randomUUID();
-    ClassType classType;
-    RaceType raseType;
     AbilityScores abilityScores;
 
     public Character(){
-        getStandard();
-    }
-
-    public void getStandard(){
-
-    }
-
-    @Override
-    public String toString() {
-        AbilityGenerator abilityGenerator = new Heroic();
-
-        return abilityGenerator.getAbilityScoreList();
+        abilityScores = new AbilityScores();
     }
 
     public UUID getkey() {
         return this.key;
+    }
+
+    public AbilityScores getAbilityScores() {
+        return abilityScores;
     }
 }

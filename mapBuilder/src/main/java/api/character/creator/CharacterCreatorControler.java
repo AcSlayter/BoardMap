@@ -11,8 +11,7 @@ import java.util.*;
 @RestController
 public class CharacterCreatorControler {
     Map<UUID, Character> characterList = new HashMap();
-
-
+    
     @GetMapping("/createChar")
     @ResponseBody
     public Character createChar() {
