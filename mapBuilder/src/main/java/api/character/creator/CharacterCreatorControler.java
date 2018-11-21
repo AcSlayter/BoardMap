@@ -30,7 +30,7 @@ public class CharacterCreatorControler {
         if(character != null) {
             return character;
         }
-        return null;
+        return new ErrorMessage(false , "Character : ".concat(UUID.toString()).concat(" not found"));
     }
 
     @GetMapping("/Character/{UUID}/AbilitySet/{generateMethod}")
@@ -39,7 +39,7 @@ public class CharacterCreatorControler {
                                 @PathVariable String generateMethod) {
         Character character = characterList.get(UUID);
         if(character != null) {
-            if (character.getAbilityGenerator().getGeneratedScores() == null) {
+            if (character.getAbilityGenerator() == null) {
                 character.setAbilityGenerationScore(generateMethod);
                 return character.getAbilityGenerator();
             }else {
@@ -60,7 +60,6 @@ public class CharacterCreatorControler {
         if(character != null) {
             return  character.setAbilityScore(abilityType, value);
         }
-
-        return null;
+        return new ErrorMessage(false , "Character : ".concat(UUID.toString()).concat(" not found"));
     }
 }

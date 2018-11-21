@@ -52,8 +52,13 @@ public class Character {
         if (!abilityGenerator.isNumberInList(value)) {
             return new ErrorMessage(false, String.valueOf(value).concat(" is not Contained in : ").concat(abilityGenerator.getGeneratedScores().toString()));
         }
+
         if (this.abilityScores.set(abilitieType, value)){
-            return abilityGenerator.remove(value);
+            if(abilityGenerator.remove(value)) {
+                return this.abilityScores;
+            } else {
+                return new ErrorMessage(false, "Not able to remove :".concat(String.valueOf(value).concat(" from :").concat(abilityGenerator.getGeneratedScores().toString())));
+            }
         }
 
         return false;
