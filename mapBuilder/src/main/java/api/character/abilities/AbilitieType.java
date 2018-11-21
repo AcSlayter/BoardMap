@@ -14,5 +14,4 @@ public enum AbilitieType {
         return abbreviation;
     }
 
-
 }

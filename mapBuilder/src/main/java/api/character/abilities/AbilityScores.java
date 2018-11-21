@@ -35,20 +35,27 @@ public class AbilityScores {
         return charisma;
     }
 
-    public void set(AbilitieType abilityType, int value) {
-        if(abilityType.equals(AbilitieType.Charisma)) {
+    public boolean set(AbilitieType abilityType, int value) {
+        if(abilityType.equals(AbilitieType.Charisma) &&  this.charisma == null ) {
             this.charisma = new Ability(AbilitieType.Charisma, value);
-        }else if (abilityType.equals(AbilitieType.Wisdom)){
+            return true;
+        }else if (abilityType.equals(AbilitieType.Wisdom) &&  this.wisdom == null){
             this.wisdom = new Ability(AbilitieType.Wisdom, value);
-        } else if (abilityType.equals(AbilitieType.Intelligence)) {
+            return true;
+        } else if (abilityType.equals(AbilitieType.Intelligence) &&  this.intelligence == null) {
             this.intelligence = new Ability(AbilitieType.Intelligence, value);
-        } else if (abilityType.equals(AbilitieType.Constitution)) {
+            return true;
+        } else if (abilityType.equals(AbilitieType.Constitution)&&  this.constitution == null) {
             this.constitution = new Ability(AbilitieType.Constitution, value);
-        }else if (abilityType.equals(AbilitieType.Strength)) {
+            return true;
+        }else if (abilityType.equals(AbilitieType.Strength) &&  this.strength == null) {
             this.strength = new Ability(AbilitieType.Strength, value);
-        }else if (abilityType.equals(AbilitieType.Dexterity)) {
+            return true;
+        }else if (abilityType.equals(AbilitieType.Dexterity) &&  this.dexterity == null) {
             this.dexterity = new Ability(AbilitieType.Dexterity, value);
+            return true;
         }
+        return false;
     }
 
     protected class Ability {

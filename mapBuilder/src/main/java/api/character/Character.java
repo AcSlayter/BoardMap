@@ -41,8 +41,21 @@ public class Character {
         return null;
     }
 
-    public void setAbilityScore(String abilityTypeName, int value) {
-        AbilitieType abilitieType = AbilitieType.valueOf(abilityTypeName);
-        this.abilityScores.set(abilitieType, value);
+    public Object setAbilityScore(String abilityTypeName, int value) {
+        AbilitieType abilitieType;
+        try {
+            abilitieType = AbilitieType.valueOf(abilityTypeName);
+        } catch (IllegalArgumentException e){
+            return new ErrorMessage(false, abilityTypeName.concat(" Name not found") );
+        }
+
+        if (!abilityGenerator.isNumberInList(value)) {
+            return new ErrorMessage(false, String.valueOf(value).concat(" is not Contained in : ").concat(abilityGenerator.getGeneratedScores().toString()));
+        }
+        if (this.abilityScores.set(abilitieType, value)){
+            return abilityGenerator.remove(value);
+        }
+
+        return false;
     }
 }

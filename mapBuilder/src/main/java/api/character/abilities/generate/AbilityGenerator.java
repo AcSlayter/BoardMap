@@ -23,4 +23,25 @@ public abstract class AbilityGenerator {
         }
         this.generatedScores = scores;
     }
+
+    public boolean isNumberInList(int number){
+        if (generatedScores.stream().anyMatch(i -> number == i)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean remove(int value) {
+        Integer remove = null;
+        for (Integer i : generatedScores) {
+            if(i == value) {
+                remove = i;
+            }
+        }
+        if(remove != null) {
+            generatedScores.remove(remove);
+            return true;
+        }
+        return false;
+    }
 }

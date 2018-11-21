@@ -1,6 +1,7 @@
 package api.character.creator;
 
 import api.character.Character;
+import api.character.ErrorMessage;
 import api.character.abilities.AbilitieType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,10 +39,16 @@ public class CharacterCreatorControler {
                                 @PathVariable String generateMethod) {
         Character character = characterList.get(UUID);
         if(character != null) {
-            character.setAbilityGenerationScore(generateMethod);
-            return character.getAbilityGenerator();
+            if (character.getAbilityGenerator().getGeneratedScores() == null) {
+                character.setAbilityGenerationScore(generateMethod);
+                return character.getAbilityGenerator();
+            }else {
+                return new ErrorMessage(false , "Character : ".concat(UUID.toString()).concat(" has Already Generated Abilities"));
+            }
+        } else {
+            return new ErrorMessage(false , "Character : ".concat(UUID.toString()).concat(" not found"));
         }
-        return null;
+
     }
 
     @GetMapping("/Character/{UUID}/setAbilityValue/{abilityType}/{value}")
@@ -51,11 +58,9 @@ public class CharacterCreatorControler {
                                       @PathVariable int value) {
         Character character = characterList.get(UUID);
         if(character != null) {
-            character.setAbilityScore(abilityType, value);
-            return character.getAbilityGenerator();
+            return  character.setAbilityScore(abilityType, value);
         }
 
         return null;
     }
-
 }
