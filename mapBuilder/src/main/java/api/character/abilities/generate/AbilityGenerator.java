@@ -4,18 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbilityGenerator {
+    protected abstract List<Integer> get_oneScore();
+    private List<Integer> generatedScores;
 
-    public abstract List<Integer> get_oneScore();
+    public AbilityGenerator () {
+        getAbilityScoreList();
+    }
 
-    public String getAbilityScoreList() {
+    public List<Integer> getGeneratedScores() {
+        return generatedScores;
+    }
+
+    private void getAbilityScoreList() {
         List<Integer> scores = new ArrayList<Integer>();
         //someUpList
         for (int index = 0; index < 6; index++) {
             scores.add(index, get_oneScore().stream().mapToInt(i -> i.intValue()).sum());
         }
-
-        return scores.toString();
+        this.generatedScores = scores;
     }
-
-
 }

@@ -35,38 +35,30 @@ public class AbilityScores {
         return charisma;
     }
 
-    public void setDexterity(int score) {
-            this.dexterity = new Ability(AbilitieType.Dexterity);
-    }
-
-    public void setStrength(int score) {
-        this.strength = new Ability(AbilitieType.Strength);
-    }
-
-    public void setConstitution(int score) {
-        this.constitution = new Ability(AbilitieType.Constitution);
-    }
-
-    public void setIntelligence(int score) {
-        this.intelligence = new Ability(AbilitieType.Intelligence);
-    }
-
-    public void setWisdom(int score) {
-        this.wisdom = new Ability(AbilitieType.Wisdom);
-    }
-
-    public void setCharisma(int score) {
-        this.charisma = new Ability(AbilitieType.Charisma);
+    public void set(AbilitieType abilityType, int value) {
+        if(abilityType.equals(AbilitieType.Charisma)) {
+            this.charisma = new Ability(AbilitieType.Charisma, value);
+        }else if (abilityType.equals(AbilitieType.Wisdom)){
+            this.wisdom = new Ability(AbilitieType.Wisdom, value);
+        } else if (abilityType.equals(AbilitieType.Intelligence)) {
+            this.intelligence = new Ability(AbilitieType.Intelligence, value);
+        } else if (abilityType.equals(AbilitieType.Constitution)) {
+            this.constitution = new Ability(AbilitieType.Constitution, value);
+        }else if (abilityType.equals(AbilitieType.Strength)) {
+            this.strength = new Ability(AbilitieType.Strength, value);
+        }else if (abilityType.equals(AbilitieType.Dexterity)) {
+            this.dexterity = new Ability(AbilitieType.Dexterity, value);
+        }
     }
 
     protected class Ability {
 
         private AbilitieType abilitieType;
+        private int abilityScore = 0;
 
-        private int AbilityScore = 0;
-
-        Ability(AbilitieType abilitieType) {
+        Ability(AbilitieType abilitieType, int value) {
             this.abilitieType = abilitieType;
+            this.abilityScore = value;
         }
 
         public AbilitieType getAbilitieType() {
@@ -74,7 +66,7 @@ public class AbilityScores {
         }
 
         public int getAbilityScore() {
-            return AbilityScore;
+            return abilityScore;
         }
     }
 

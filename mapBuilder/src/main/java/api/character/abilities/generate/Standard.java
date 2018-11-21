@@ -10,7 +10,7 @@ public class Standard extends AbilityGenerator {
 
 
     //get 4d6 rolls and removed the smallest number and add the results together
-    public List<Integer> get_oneScore(){
+    protected List<Integer> get_oneScore(){
         List<Integer> roll = Dice.roll(4, 6);
         Collections.sort(roll);
         roll.remove(0);
